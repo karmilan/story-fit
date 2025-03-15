@@ -1,15 +1,18 @@
 import * as ImageManipulator from "expo-image-manipulator";
 import * as ImagePicker from "expo-image-picker";
 import * as MediaLibrary from "expo-media-library";
+import { StatusBar } from "expo-status-bar";
+import { verifyInstallation } from "nativewind";
 import React, { useRef, useState } from "react";
-import { Alert, View } from "react-native";
+import { Alert, SafeAreaView, Text } from "react-native";
 import ViewShot from "react-native-view-shot";
+import HomeScreen from "../screens/HomeScreen";
 import "./global.css";
-import HomeScreen from "./screens/HomeScreen";
 
 export default function App() {
   const [image, setImage] = useState<string | null>(null);
   const viewShotRef = useRef<ViewShot>(null);
+  verifyInstallation();
 
   // Request permissions for media library
   const requestPermissions = async () => {
@@ -63,7 +66,16 @@ export default function App() {
   };
 
   return (
-    <View className="flex-1 justify-center items-center mb-20">
+    <SafeAreaView
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: 20,
+      }}
+    >
+      <StatusBar style="auto" />
+      <Text className="text-red-700">StoryFit</Text>
       <HomeScreen />
       {/* <Button title="Pick Image" onPress={pickImage} />
       {image && (
@@ -78,6 +90,6 @@ export default function App() {
           <Button title="Download to Gallery" onPress={saveImageToGallery} />
         </>
       )} */}
-    </View>
+    </SafeAreaView>
   );
 }
