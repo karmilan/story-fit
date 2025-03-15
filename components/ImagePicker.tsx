@@ -19,8 +19,8 @@ const ImagePickerComponent: React.FC<ImagePickerComponentProps> = ({
     try {
       const image = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        allowsEditing: true, // Enables cropping
-        aspect: [9, 16], // Set aspect ratio for stories (1080x1920)
+        allowsEditing: true,
+        aspect: [9, 16], // Instagram Story Ratio
         quality: 1,
       });
 
@@ -35,7 +35,7 @@ const ImagePickerComponent: React.FC<ImagePickerComponentProps> = ({
   return (
     <Pressable
       onPress={pickImage}
-      className="bg-blue-600 py-3 px-6 rounded-lg mt-4"
+      className="bg-blue-500 px-5 py-3 rounded-xl mt-4 shadow-lg active:bg-blue-700"
     >
       <Text className="text-white text-lg font-semibold text-center">
         📸 Pick Image

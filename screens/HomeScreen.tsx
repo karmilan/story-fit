@@ -7,9 +7,13 @@ const HomeScreen = () => {
   const [imageUri, setImageUri] = useState<string | null>(null);
 
   return (
-    <View className="flex-1 justify-center items-center">
-      <Text className="text-md color-red-600">Home Screen</Text>
+    <View className="flex-1 items-center justify-center bg-gray-900 p-5">
+      <Text className="text-white text-2xl font-bold mb-5 text-center">
+        📱 StoryFit - Resize & Download
+      </Text>
+
       <ImagePickerComponent onImagePicked={setImageUri} />
+
       {imageUri && <ImagePreview uri={imageUri} />}
     </View>
   );
